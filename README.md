@@ -13,7 +13,7 @@ The application utilizes <assigned data structure or algorithm> to perform the n
 <methodology and algorithmic steps>
   
 ## Compilation Instructions
-<modify to dsa program>
+<modify to dsa program>.
 ```
 **Prefered Method**
 ```
