@@ -14,6 +14,7 @@ The application utilizes <assigned data structure or algorithm> to perform the n
   
 ## Compilation Instructions
 <modify to dsa program>
+```
 **Prefered Method**
 ```
 This program was developed using CLion during compilation and runtime. We recommend CLion for application use.
