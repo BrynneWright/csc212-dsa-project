@@ -1,0 +1,74 @@
+﻿Project Report
+Must include the following:
+* Title Page
+* (Project Name)
+   * group members
+      * Brynne Wright, Daniel Huskey, Derrick Roberts, and Nicholas Wainwright
+   * project topic with concentration 
+      * Sorting Algorithms - Concentration ?
+   * Date
+   * (Due)
+      * April 24th 2023
+* Table of Contents
+   * Headings
+   * Subheadings
+   * Example:
+      * Summary
+      * Overview
+         * Project Description
+         * Project Structure
+         * Pseudocode
+      * Compilation
+         * Inputs / Input Files 
+         * Preferred Method
+         * Alternative Method
+      * Runtime 
+         * Prompted Inputs 
+         * Formatting
+         * How to use the Program
+
+
+* Body (things to include, not necessarily in this order…)
+   * introduction to your topic
+   * (Summary & Overview)
+      * context & purpose
+      * (Project Description)
+      * (Project Structure)
+      * surface level detail
+   * introduction to your project
+      * what is it
+      * (Purpose)
+      * why did you choose it
+      * (Idea / Planning)
+      * how does it mesh with your topic
+      * (Sorting Algorithm Implementation)
+   * methods
+   * (Functionality)
+      * explain the data structure / algorithm in depth
+      * (Topic)
+         * deeper thinking details
+   * implementation
+   * (Pseudocode & Source Code)
+      * describe your work
+      * (Describe Functions)
+      * highlight portions of code to address
+      * (Important Processes)
+      * proofs (if you code is working)
+      * (Sample I/O)
+         * include input scenarios
+         * (Test Cases)
+         * actual outputs from your code
+         * (Output)
+         * detailed descriptions
+   * contributions
+   * (Credit)
+      * create a table with each members contributions
+      * (Table - Brynne, Daniel, Derrick, Nicholas)
+      * note: contributions should be verifiable via GitHub
+      * (GitHub link)
+
+
+* Conclusion
+   * wrap up findings from research
+   * wrap up findings from your programming
+   * formalize any other conclusions or predictions you can make relative to the topic and ways it may be used in the world
