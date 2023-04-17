@@ -54,6 +54,7 @@
  */
 
 
+
 // Insertion sorting function - MOD into deck class method
 std::vector<std::string> insertion_sort(std::vector<std::string> deck){
 
@@ -131,7 +132,6 @@ std::vector<std::string> merge_sort(std::vector<std::string> deck){
 
 
 // Quick sorting function - MOD into deck class method
-
 int partition(std::vector<std::string>& deck, int low, int high) {
     std::string pivot = deck[high];
     int i = low - 1;
