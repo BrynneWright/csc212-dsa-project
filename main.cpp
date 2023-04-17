@@ -75,10 +75,55 @@ std::vector<std::string> insertion_sort(std::vector<std::string> deck){
 
 
 // Merge sorting function - MOD into deck class method
+void merge(std::vector<std::string>& deck, int left, int center, int right) {
+    int n1 = center - left + 1;
+    int n2 = right - center;
+
+    std::vector<std::string> L(n1);
+    std::vector<std::string> R(n2);
+
+    for (int i = 0; i < n1; i++) {
+        L[i] = deck[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        R[j] = deck[center + 1 + j];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            deck[k++] = L[i++];
+        } else {
+            deck[k++] = R[j++];
+        }
+    }
+
+    while (i < n1) {
+        deck[k++] = L[i++];
+    }
+
+    while (j < n2) {
+        deck[k++] = R[j++];
+    }
+}
+
+void merge_sort_alg(std::vector<std::string>& deck, int left, int right) {
+    if (left < right) {
+        int center = left + (right - left) / 2;
+        merge_sort_alg(deck, left, center);
+        merge_sort_alg(deck, center + 1, right);
+        merge(deck, left, center, right);
+    }
+}
+
+
 std::vector<std::string> merge_sort(std::vector<std::string> deck){
 
     // CODE: Merge sort implementation
-    
+    int n = deck.size();
+    merge_sort_alg(deck, 0, n - 1);
 
     return deck;
 }
