@@ -72,6 +72,8 @@ std::vector<std::string> insertion_sort(std::vector<std::string> deck){
     return deck;
 }
 
+
+
 // Merge sorting function - MOD into deck class method
 std::vector<std::string> merge_sort(std::vector<std::string> deck){
 
@@ -81,13 +83,42 @@ std::vector<std::string> merge_sort(std::vector<std::string> deck){
     return deck;
 }
 
+
+
 // Quick sorting function - MOD into deck class method
+
+int partition(std::vector<std::string>& deck, int low, int high) {
+    std::string pivot = deck[high];
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (deck[j] < pivot) {
+            i++;
+            std::swap(deck[i], deck[j]);
+        }
+    }
+    std::swap(deck[i + 1], deck[high]);
+    return i + 1;
+}
+
+void quick_sort_alg(std::vector<std::string>& deck, int low, int high) {
+    if (low < high) {
+        int x = partition(deck, low, high);
+        quick_sort_alg(deck, low, x - 1);
+        quick_sort_alg(deck, x + 1, high);
+    }
+}
+
+
 std::vector<std::string> quick_sort(std::vector<std::string> deck){
 
     // CODE: Quick sort implementation
+    int n = deck.size();
+    quick_sort_alg(deck, 0, n - 1);
 
     return deck;
 }
+
+
 
 // Additional sorting function - MOD into deck class method
 std::vector<std::string> additional_sort(std::vector<std::string> deck){
@@ -97,6 +128,7 @@ std::vector<std::string> additional_sort(std::vector<std::string> deck){
 
     return deck;
 }
+
 
 
 // Getter for fastest sorting algorithm runtime i.e. correct choice - MOD into deck class method
