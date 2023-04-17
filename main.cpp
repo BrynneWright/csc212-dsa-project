@@ -58,6 +58,16 @@
 std::vector<std::string> insertion_sort(std::vector<std::string> deck){
 
     // CODE: Insertion sort implementation
+    int n = deck.size();
+    for (int i = 1; i < n; i++) {
+        std::string key = deck[i];
+        int j = i - 1;
+        while (j >= 0 && deck[j] > key) {
+            deck[j + 1] = deck[j];
+            j--;
+        }
+        deck[j + 1] = key;
+    }
 
     return deck;
 }
@@ -66,6 +76,7 @@ std::vector<std::string> insertion_sort(std::vector<std::string> deck){
 std::vector<std::string> merge_sort(std::vector<std::string> deck){
 
     // CODE: Merge sort implementation
+    
 
     return deck;
 }
