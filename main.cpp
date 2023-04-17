@@ -167,11 +167,21 @@ std::vector<std::string> quick_sort(std::vector<std::string> deck){
 
 
 // Additional sorting function - MOD into deck class method
-std::vector<std::string> additional_sort(std::vector<std::string> deck){
-
-    // CODE: Additional sort implementation
-    // i.e. 1 additional algorithm not present in class
-
+std::vector<std::string> gnomeSort(std::vector<std::string> deck){
+    
+    int index = 0;
+  
+    while (index < deck.size()-1) {
+        if (index == 0){
+            index++;
+        }
+        if (deck[index] >= deck[index - 1]){
+            index++;
+        }else{
+            std::swap(deck[index], deck[index - 1]);
+            index--;
+        }
+    }
     return deck;
 }
 
