@@ -5,6 +5,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <string>
 
 /*
  * BASIC DSA PROJECT IMPLEMENTATIONS
