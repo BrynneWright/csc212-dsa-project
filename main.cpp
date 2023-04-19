@@ -268,11 +268,15 @@ int main() {
         // i.e. shuffle deck[0] through deck[temp]
 
     } else if(initial_sort_num == 3){
-        initial_sort = "reversed";
-
         // CODE: modify sorted deck to be in reverse order
         // i.e. reverse entire deck
-
+        initial_sort = "reversed";
+        std::vector<std::string> animalTemp;
+        for(int x = animal.size();x>0;x--){
+            animalTemp.push_back(animal[x]);  
+        }
+        animal = animalTemp;
+        
     } else if(initial_sort_num == 4){
         initial_sort = "randomized";
 
