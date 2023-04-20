@@ -266,6 +266,7 @@ int main() {
 
         // CODE: Modify sorted deck to be partially sorted
         // i.e. shuffle deck[0] through deck[temp]
+        std::vector<std::string> animalTemp;
         std::initial_sort(deck.begin(), deck.begin() + deck_size, deck.end());
 
     } else if(initial_sort_num == 3){
