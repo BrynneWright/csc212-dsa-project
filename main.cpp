@@ -266,6 +266,7 @@ int main() {
 
         // CODE: Modify sorted deck to be partially sorted
         // i.e. shuffle deck[0] through deck[temp]
+        std::initial_sort(deck.begin(), deck.begin() + deck_size, deck.end());
 
     } else if(initial_sort_num == 3){
         // CODE: modify sorted deck to be in reverse order
