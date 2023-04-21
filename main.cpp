@@ -281,7 +281,8 @@ int main() {
         
     } else if(initial_sort_num == 4){
         initial_sort = "randomized";
-
+        
+        std::shuffle(std::begin(animal), std::end(animal), std::default_random_engine());
         // CODE: modify sorted deck to be completely randomized
         // i.e. shuffle entire deck
 
