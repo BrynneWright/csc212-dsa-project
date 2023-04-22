@@ -123,30 +123,22 @@ int main(){
     // Create data vector of pairs <std::string name, float time> to store algorithm name and runtime in selection order
     std::vector<std::pair<std::string, float>> data;
 
-    // Calculate and store runtime for each algorithm
-    for(int i = 1; i <= 4; i++){
-        float sort_time = get_runtime(deck, i);
-        std::string sort_name;
-        switch(i){
-            case 1:
-                sort_name = "Insertion sort";
-                break;
-            case 2:
-                sort_name = "Merge sort";
-                break;
-            case 3:
-                sort_name = "Quick sort";
-                break;
-            case 4:
-                sort_name = "Gnome sort";
-                break;
-            default:
-                std::cout << "Invalid Sorting Algorithm. Please provide a value between 1-4." << std::endl;
-                break;
-        }
-        std::pair<std::string, float> data_pair(sort_name, sort_time);
-        data.push_back(data_pair);
-    }
+    std::vector<std::string> deck1 = deck;
+    std::vector<std::string> deck2 = deck;
+    std::vector<std::string> deck3 = deck;
+    std::vector<std::string> deck4 = deck;
+
+    std::pair<std::string, float> data_pair1("Insertion sort", get_runtime(deck1, 1));
+    data.push_back(data_pair1);
+
+    std::pair<std::string, float> data_pair2("Merge sort", get_runtime(deck2, 2));
+    data.push_back(data_pair2);
+
+    std::pair<std::string, float> data_pair3("Quick sort", get_runtime(deck3, 3));
+    data.push_back(data_pair3);
+
+    std::pair<std::string, float> data_pair4("Gnome sort", get_runtime(deck4, 4));
+    data.push_back(data_pair4);
 
     // Create rankings vector of pairs <std::string name, float time> to store algorithm name and runtime in ascending order
     std::vector<std::pair<std::string, float>> rankings = data;
