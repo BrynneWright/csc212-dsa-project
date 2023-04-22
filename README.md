@@ -1,12 +1,28 @@
 # Term Project - CSC 212 DSA
-CSC212 Spring 2023 Term Project
+CSC212 Spring 2023 Final Project
 
 ## Summary
 ### Project Description:
-We have created a **<name>** application to <goal of program>. The output will include <output>. The program will evaluate <blank> and provide <blank> based on the user request. 
+
+We have created a card sorting application to compare different sorting algorithms strengths and weaknesses of different sorting algorithms. In this case we are using quick sort, gnome sort, insertion sort, and merge sort. This program can be used as a study tool to be able aid when learning about these different algorithms. The program works by first generating a presorted vector of strings, after this vector a random number is chosen between 1-4 to decide what happens to the vector, at this stage one of four things can happen the vector could remain the same, reverse the order of the vector, partially sort the vector, or fully randomize the vector. This is done so all of the sorting algorithms strengths and weaknesses can be shown and displayed and outputed to the user, so that way in when programming if you know the conditions that the data that you are sorting is in to pick an algorithm that is most successful in those conditions.  
 
 ### Project Structure:
-The application utilizes <assigned data structure or algorithm> to perform the neccessary functionality.
+the program is one main c++ file that contains four sorting algorithms a way to rank them and and a way to generate a deck of cards as a vector of strings.
+
+To start with the program starts off with randomly generating a starting point for the deck of cards that is used to test the four sorting algorithms on. The four states that the gerated deck can be in is, leaving it as is the presorted state, reversing the deck to be sorted but in the opposite direction, randomizing half the vector, and then fully randomizing the vector. After that the application utilizes four different sorting algorithms, quick sort, gnome sort, insertion sort, and merge sort, to sort through a deck of cards and ranks the runtime in the background. Next the user is given the initial state of the vector, and asked to give what they think the best algorithm would be and this user input is read in and compared to the results that the program first found if it's correct then it states as such and provides the graph output for how the algorithms compare.
+
+
+NOTE: All of the sorting algorithms return a new sorted version of this vector we do it this way since we are running all four algorithms and we don't want to have to randomize the vector after each sort so we do not work on the original vector to keep it as fair as possible for the algorithms.
+
+Insertion Sort:
+
+Merge Sort:
+
+Quick Sort:
+
+Gnome Sort:
+  Gnome Sort in this program takes in an unsorted vector of strings and returns a new vector. Gnome Sort is a kind of variation of insertion sort that works without the need for a nested for loop.  This index can be both increased as well as decreased depending on where the value is placed. After getting this index, the algorithm takes the value at that index and compares the value to the left index and checks to see if that value is greater than the value being moved. If it is not then the index is moved back until it finds this point. Once it finds this point where the left is no longer greater than the current value then the algorithm moves the value to that position.
+
 
 <describe program contents and files>
 
