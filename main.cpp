@@ -113,18 +113,19 @@ int main(int argc, char* argv[]){
 
     // Prompt for sorting algorithm selection
     std::cout << "Given these properties, which sorting algorithm will sort your deck the fastest?" << std::endl;
-    std::cout << "0 - Insertion Sort" << std::endl;
-    std::cout << "1 - Merge Sort" << std::endl;
-    std::cout << "2 - Quick Sort" << std::endl;
-    std::cout << "3 - Gnome Sort" << std::endl;
+    std::cout << "1 - Insertion Sort" << std::endl;
+    std::cout << "2 - Merge Sort" << std::endl;
+    std::cout << "3 - Quick Sort" << std::endl;
+    std::cout << "4 - Gnome Sort" << std::endl;
     int selected; // 1-4
-    std::cout << "Enter a number 0-3: ";
+    std::cout << "Enter a number 1-4: ";
     std::cin >> selected;
     std::cout << std::endl;
     std::cout << "You chose: " << selected << std::endl;
     
     std::cout << std::endl;
-    selected-1;
+    selected -= 1;
+    
     /*
     // Test DATA
     std::vector<std::pair<std::string, float>> data;
@@ -171,13 +172,13 @@ int main(int argc, char* argv[]){
     // Print to check only
     std::cout << "DATA:" << std::endl;
     for(const auto &i : data){
-        std::cout << i.first << " - " << i.second << std::endl;
+        std::cout << i.first << " - " << std::fixed << std::setprecision(4) << i.second << std::endl;
     }
     std::cout << std::endl;
     // Print to check only
     std::cout << "RANKINGS:" << std::endl;
     for(const auto &it : rankings){
-        std::cout << it.first << " - " << it.second << std::endl;
+        std::cout << it.first << " - " << std::fixed << std::setprecision(4) << it.second << std::endl;
     }
 
     std::cout << std::endl;
