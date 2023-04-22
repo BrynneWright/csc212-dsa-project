@@ -12,6 +12,7 @@
 // Helper functions
 float get_runtime(std::vector<std::string> &deck, int sort_num);
 void print_rankings(std::vector<std::pair<std::string, float>> &rankings);
+void print_key(std::string shuffle, int num_cards);
 
 // Insertion sort
 std::vector<std::string> insertion_sort(std::vector<std::string> &deck);
@@ -188,6 +189,53 @@ int main(){
     print_rankings(rankings);
 
     // Print key for logic and reasoning
+    print_key(initial_sort_str, deck_size);
+
+}
+
+void print_key(std::string shuffle, int num_cards){ // Modify to print user selected and correct only
+
+    std::cout << "Your deck was made up of " << num_cards << " " << shuffle << " cards representing " << num_cards / 2 << " animal pairs." << std::endl;
+    std::cout << "This key provides further insight into why each of these sorting algorithms performed as such in relation to the initial properties of your deck." << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Insertion Sort" << std::endl;
+    std::cout << "BEST CASE: O(n)" << std::endl;
+    std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
+    std::cout << "WORST CASE: O(n^2)" << std::endl;
+    std::cout << " - Best for small decks" << std::endl;
+    std::cout << " - Best for partially or fully sorted decks" << std::endl;
+    std::cout << " - Inefficient for large decks due to multiple iterations" << std::endl;
+    std::cout << " - Worst case for randomized decks" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Merge Sort" << std::endl;
+    std::cout << "BEST CASE: O(n log n)" << std::endl;
+    std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
+    std::cout << "WORST CASE: O(n log n)" << std::endl;
+    std::cout << " - Best for reversed or partially sorted decks" << std::endl;
+    std::cout << " - Efficient for large decks but may find limitations due to merging" << std::endl;
+    std::cout << " - Inefficient for large randomized decks" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Quick Sort" << std::endl;
+    std::cout << "BEST CASE: O(n log n)" << std::endl;
+    std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
+    std::cout << "WORST CASE: O(n^2)" << std::endl;
+    std::cout << " - Best for large decks" << std::endl;
+    std::cout << " - Efficient for randomized decks due to partitioning" << std::endl;
+    std::cout << " - Inefficient for partially sorted or reversed decks" << std::endl;
+    std::cout << " - Fastest for small fully sorted decks but slowest for larger sorted decks" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Gnome Sort" << std::endl;
+    std::cout << "BEST CASE: O(n)" << std::endl;
+    std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
+    std::cout << "WORST CASE: O(n^2)" << std::endl;
+    std::cout << " - Best for small decks" << std::endl;
+    std::cout << " - Best for partially or fully sorted decks" << std::endl;
+    std::cout << " - Worst case for randomized decks" << std::endl;
+    std::cout << " - Less efficient than insertion sort due to backward steps and swaps" << std::endl;
 
 }
 
