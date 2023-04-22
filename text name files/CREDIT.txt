@@ -1,0 +1,6 @@
+Animals.txt github user albskjorr with a list compiled from a-z-animals.com
+	https://github.com/skjorrface/animals.txt/blob/master/animals.txt
+	https://a-z-animals.com/animals/
+
+pokemon.txt github user Cervoise with a list of pokemon orginally created for password cracker
+	https://github.com/cervoise/pentest-scripts/blob/master/password-cracking/wordlists/pokemon-list-en.txt
