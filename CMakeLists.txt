@@ -3,4 +3,4 @@ project(212DSAProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(212DSAProject main.cpp deck.cpp deck.h)
+add_executable(212DSAProject main.cpp)
