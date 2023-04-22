@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
    
     // Get random size for deck between 5 - 25
     srand(time(nullptr)); // Initialize random seed based on current time
-    int deck_size = (animal_names.size()-150)+rand() % animal_names.size()-100;
+    int deck_size = (animal_names.size()-150)+rand() % 150;
     // Deck vector
     std::vector<std::string> deck;
 
@@ -113,17 +113,18 @@ int main(int argc, char* argv[]){
 
     // Prompt for sorting algorithm selection
     std::cout << "Given these properties, which sorting algorithm will sort your deck the fastest?" << std::endl;
-    std::cout << "1 - Insertion Sort" << std::endl;
-    std::cout << "2 - Merge Sort" << std::endl;
-    std::cout << "3 - Quick Sort" << std::endl;
-    std::cout << "4 - Gnome Sort" << std::endl;
+    std::cout << "0 - Insertion Sort" << std::endl;
+    std::cout << "1 - Merge Sort" << std::endl;
+    std::cout << "2 - Quick Sort" << std::endl;
+    std::cout << "3 - Gnome Sort" << std::endl;
     int selected; // 1-4
-    std::cout << "Enter a number 1-4: ";
+    std::cout << "Enter a number 0-3: ";
     std::cin >> selected;
     std::cout << std::endl;
     std::cout << "You chose: " << selected << std::endl;
+    
     std::cout << std::endl;
-
+    selected-1;
     /*
     // Test DATA
     std::vector<std::pair<std::string, float>> data;
@@ -188,7 +189,7 @@ int main(int argc, char* argv[]){
     // Output message if correct or incorrect
     std::string selected_name = data[selected].first;
     float selected_time = data[selected].second;
-
+    
     if(correct_time == selected_time){
         std::cout << "That is correct! The optimal sorting algorithm for your deck is " << correct_name << " with a runtime of " << correct_time << " units." << std::endl;
         std::cout << std::endl;
