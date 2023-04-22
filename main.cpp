@@ -8,6 +8,7 @@
 #include <random> // Shuffle
 #include <iomanip> // Runtime
 #include <utility> // Pairs
+#include <fstream>
 
 // Helper functions
 float get_runtime(std::vector<std::string> &deck, int sort_num);
@@ -31,42 +32,37 @@ std::vector<std::string> gnomeSort(std::vector<std::string> &deck);
 int main(int argc, char* argv[]){
     
      if (argc < 2) {
-        cout << "Usage: " << argv[0] << " <filename>" << endl;
+        std::cout << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
     }
 
-    string filename = argv[1];
-    ifstream input_file(filename);
+    std::string filename = argv[1];
+    std::ifstream input_file(filename);
     if (!input_file) {
-        cerr << "Error: could not open file \"" << filename << "\"" << endl;
+        std::cerr << "Error: could not open file \"" << filename << "\"" << std::endl;
         return 1;
     }
 
-    vector<string> animal_names;
+    std::vector<std::string> animal_names;
 
-    string line;
-    while (getline(input_file, line)) {
+    std::string line;
+    while (std::getline(input_file, line)) {
         animal_names.push_back(line);
     }
 
     input_file.close();
 
-    return 0;
-}
-    // Animal library for cards
-    std::vector<std::string> animal = {"alligator", "bird", "cat", "dog", "elephant", "frog", "goat", "hippo", "iguana", "jellyfish", "kangaroo", "lion", "monkey", "narwhal", "octopus", "penguin", "quail", "rabbit", "snake", "tiger", "unicorn", "viper", "walrus", "yak", "zebra"};
-
+   
     // Get random size for deck between 5 - 25
     srand(time(nullptr)); // Initialize random seed based on current time
-    int deck_size = rand() % 21 + 5; // Generates random # between 0 and 20 and adds 5 to get a number between 5 and 25 inclusive
-
+    int deck_size = (animal_names.size()-150)+rand() % animal_names.size()-100;
     // Deck vector
     std::vector<std::string> deck;
 
     // Add a pair of each animal card to the deck
     for(int i = 0; i <= deck_size; i++){
-        deck.push_back(animal[i]);
-        deck.push_back(animal[i]);
+        deck.push_back(animal_names[i]);
+        deck.push_back(animal_names[i]);
     }
 
     // Deck size x 2 and save # animals
@@ -135,7 +131,6 @@ int main(int argc, char* argv[]){
     data.push_back(std::make_pair("Merge sort", 1.2222));
     data.push_back(std::make_pair("Quick sort", 0.0333));
     data.push_back(std::make_pair("Gnome sort", 0.5555));
-
     // Test Rankings
     std::vector<std::pair<std::string, float>> rankings;
     data.push_back(std::make_pair("Quick sort r", 0.0333));
