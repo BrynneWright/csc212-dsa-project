@@ -190,7 +190,7 @@ int main(int argc, char* argv[]){
     std::string selected_name = data[selected].first;
     float selected_time = data[selected].second;
     
-    if(correct_time == selected_time){
+    if(correct_name == selected_name){
         std::cout << "That is correct! The optimal sorting algorithm for your deck is " << correct_name << " with a runtime of " << correct_time << " units." << std::endl;
         std::cout << std::endl;
     } else{
