@@ -28,7 +28,31 @@ std::vector<std::string> quick_sort(std::vector<std::string> &deck);
 std::vector<std::string> gnomeSort(std::vector<std::string> &deck);
 
 // MAIN
-int main(){
+int main(int argc, char* argv[]){
+    
+     if (argc < 2) {
+        cout << "Usage: " << argv[0] << " <filename>" << endl;
+        return 1;
+    }
+
+    string filename = argv[1];
+    ifstream input_file(filename);
+    if (!input_file) {
+        cerr << "Error: could not open file \"" << filename << "\"" << endl;
+        return 1;
+    }
+
+    vector<string> animal_names;
+
+    string line;
+    while (getline(input_file, line)) {
+        animal_names.push_back(line);
+    }
+
+    input_file.close();
+
+    return 0;
+}
     // Animal library for cards
     std::vector<std::string> animal = {"alligator", "bird", "cat", "dog", "elephant", "frog", "goat", "hippo", "iguana", "jellyfish", "kangaroo", "lion", "monkey", "narwhal", "octopus", "penguin", "quail", "rabbit", "snake", "tiger", "unicorn", "viper", "walrus", "yak", "zebra"};
 
