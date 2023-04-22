@@ -61,8 +61,11 @@ int main(){
         initial_sort_str = "PARTIALLY sorted";
         // CODE: Modify sorted deck to be partially sorted
         // i.e. shuffle deck[0] through deck[temp]
-        std::vector<std::string> tempDeck;
-        // std::initial_sort(deck.begin(), deck.begin() + deck_size, deck.end()); // Why "std::initial_sort" ?
+      
+        for (int x  = deck.size()/2 - 0 - 1; x > 0; --x){
+        std::swap(deck[x], deck[std::rand() % (x + 1)]);
+        }
+       
     } else if(initial_sort == 3){
         initial_sort_str = "REVERSED";
         // CODE: modify sorted deck to be in reverse order
@@ -77,7 +80,9 @@ int main(){
         initial_sort_str = "RANDOMIZED";
         // CODE: modify sorted deck to be completely randomized
         // i.e. shuffle entire deck
-        std::shuffle(std::begin(animal), std::end(animal), std::default_random_engine());
+        for (int x  = deck.size() - 0 - 1; x > 0; --x){
+        std::swap(deck[x], deck[std::rand() % (x + 1)]);
+        }
     }
 
     // Output starting deck properties
