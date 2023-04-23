@@ -5,15 +5,15 @@
 #include <cstdlib> // rand() and srand()
 #include <ctime> // Random and Runtime
 #include <algorithm> // Shuffle
-#include <random> // Shuffle
+#include <random>
 #include <iomanip> // Runtime
 #include <utility> // Pairs
-#include <fstream>
+#include <fstream> // File input
 
-// Helper functions
+// Functions
 float get_runtime(std::vector<std::string> &deck, int sort_num);
 void print_rankings(std::vector<std::pair<std::string, float>> &rankings);
-void print_key(std::string shuffle, int num_cards);
+void print_key(std::string shuffle, int num_cards, int choice);
 
 // Insertion sort
 std::vector<std::string> insertion_sort(std::vector<std::string> &deck);
@@ -30,8 +30,8 @@ std::vector<std::string> gnomeSort(std::vector<std::string> &deck);
 
 // MAIN
 int main(int argc, char* argv[]){
-    
-     if (argc < 2) {
+
+    if (argc < 2) {
         std::cout << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
     }
@@ -43,53 +43,48 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    std::vector<std::string> animal_names;
+    std::vector<std::string> file_library;
 
     std::string line;
     while (std::getline(input_file, line)) {
-        animal_names.push_back(line);
+        file_library.push_back(line);
     }
 
     input_file.close();
 
-   
-    // Get random size for deck between 5 - 25
+    // Get random size for unique elements
     srand(time(nullptr)); // Initialize random seed based on current time
-    int deck_size = (animal_names.size()-150)+rand() % 150;
+    int deck_size = (file_library.size() - 100) + rand() % 100;
     // Deck vector
     std::vector<std::string> deck;
 
-    // Add a pair of each animal card to the deck
+    // Add a pair of each element to the deck as cards
     for(int i = 0; i <= deck_size; i++){
-        deck.push_back(animal_names[i]);
-        deck.push_back(animal_names[i]);
+        deck.push_back(file_library[i]);
+        deck.push_back(file_library[i]);
     }
 
-    // Deck size x 2 and save # animals
-    int num_animals = deck_size; // Save num animals
+    // Deck size x 2
+    int num_animals = deck_size; // Save # elements
     deck_size *= 2;
 
-    // Get random shuffle for deck between 1 - 4
+    // Get random shuffle for deck (fully, partially, reversed, randomized)
     int initial_sort = rand() % 4 + 1; // Generates random # between 1 and 4 (inclusive)
 
-    // Shuffle the deck to random shuffle
+    // Shuffle the deck accordingly
     std::string initial_sort_str;
     if(initial_sort == 1){
         initial_sort_str = "FULLY sorted";
-        // deck should already be fully sorted when constructed from library
+        // deck should already be fully sorted when constructed from file elements
     } else if(initial_sort == 2){
         initial_sort_str = "PARTIALLY sorted";
-        // CODE: Modify sorted deck to be partially sorted
-        // i.e. shuffle deck[0] through deck[temp]
-      
+        // Mod sorted deck to be partially sorted
         for (int x  = deck.size()/2 - 0 - 1; x > 0; --x){
-        std::swap(deck[x], deck[std::rand() % (x + 1)]);
+            std::swap(deck[x], deck[std::rand() % (x + 1)]);
         }
-       
     } else if(initial_sort == 3){
         initial_sort_str = "REVERSED";
-        // CODE: modify sorted deck to be in reverse order
-        // i.e. reverse entire deck
+        // Mod sorted deck to be reversed
         std::vector<std::string> tempDeck;
         // Deck tempDeck;
         for(auto x = deck.size(); x > 0; x--){
@@ -98,20 +93,19 @@ int main(int argc, char* argv[]){
         deck = tempDeck;
     } else if(initial_sort == 4){
         initial_sort_str = "RANDOMIZED";
-        // CODE: modify sorted deck to be completely randomized
-        // i.e. shuffle entire deck
+        // Modify sorted deck to be randomized
         for (int x  = deck.size() - 0 - 1; x > 0; --x){
-        std::swap(deck[x], deck[std::rand() % (x + 1)]);
+            std::swap(deck[x], deck[std::rand() % (x + 1)]);
         }
     }
 
-    // Output starting deck properties
+    // Output starting deck properties to user
     std::cout << std::endl;
     std::cout << "About Your Deck:" << std::endl;
-    std::cout << "Your deck is " << initial_sort_str << " and contains " << deck_size << " cards representing " << num_animals << " animal pairs!" << std::endl;
+    std::cout << "Your deck is " << initial_sort_str << " and contains " << deck_size << " cards representing " << num_animals << " pairs!" << std::endl;
     std::cout << std::endl;
 
-    // Prompt for sorting algorithm selection
+    // Prompt user for sorting algorithm selection
     std::cout << "Given these properties, which sorting algorithm will sort your deck the fastest?" << std::endl;
     std::cout << "1 - Insertion Sort" << std::endl;
     std::cout << "2 - Merge Sort" << std::endl;
@@ -120,35 +114,21 @@ int main(int argc, char* argv[]){
     int selected; // 1-4
     std::cout << "Enter a number 1-4: ";
     std::cin >> selected;
-    std::cout << std::endl;
     std::cout << "You chose: " << selected << std::endl;
-    
+
     std::cout << std::endl;
-    selected -= 1;
-    
-    /*
-    // Test DATA
-    std::vector<std::pair<std::string, float>> data;
-    data.push_back(std::make_pair("Insertion sort", 0.1111));
-    data.push_back(std::make_pair("Merge sort", 1.2222));
-    data.push_back(std::make_pair("Quick sort", 0.0333));
-    data.push_back(std::make_pair("Gnome sort", 0.5555));
-    // Test Rankings
-    std::vector<std::pair<std::string, float>> rankings;
-    data.push_back(std::make_pair("Quick sort r", 0.0333));
-    data.push_back(std::make_pair("Insertion sort r", 0.1111));
-    data.push_back(std::make_pair("Gnome sort r", 0.5555));
-    data.push_back(std::make_pair("Merge sort r", 1.2222));
-    */
+    selected -= 1; // Subtract 1 from user selection to set back to 0-3 range for index
 
-    // Create data vector of pairs <std::string name, float time> to store algorithm name and runtime in selection order
+    // Create data vector of pairs <std::string name, float time> to store algorithm name and runtime in selection order (insertion, merge, quick, gnome)
     std::vector<std::pair<std::string, float>> data;
 
+    // Create deck copies to perform each sort
     std::vector<std::string> deck1 = deck;
     std::vector<std::string> deck2 = deck;
     std::vector<std::string> deck3 = deck;
     std::vector<std::string> deck4 = deck;
 
+    // Get runtimes for each and push pairs to data vector
     std::pair<std::string, float> data_pair1("Insertion sort", get_runtime(deck1, 1));
     data.push_back(data_pair1);
 
@@ -161,100 +141,115 @@ int main(int argc, char* argv[]){
     std::pair<std::string, float> data_pair4("Gnome sort", get_runtime(deck4, 4));
     data.push_back(data_pair4);
 
-    // Create rankings vector of pairs <std::string name, float time> to store algorithm name and runtime in ascending order
+    // Create rankings vector of pairs <std::string name, float time> to store algorithm name and runtime in ascending order (fastest -> slowest)
     std::vector<std::pair<std::string, float>> rankings = data;
 
-    // Sort rankings vector by time in ascending order
+    // Sort rankings vector by runtime in ascending order
     std::sort(rankings.begin(), rankings.end(), [](const std::pair<std::string, float> &a, const std::pair<std::string, float> &b){
-            return a.second < b.second;
-        });
+        return a.second < b.second;
+    });
 
-    // Print to check only
+    /*
+    // Print to check for testing only
     std::cout << "DATA:" << std::endl;
     for(const auto &i : data){
         std::cout << i.first << " - " << std::fixed << std::setprecision(4) << i.second << std::endl;
     }
     std::cout << std::endl;
-    // Print to check only
+
+    // Print to check for testing only
     std::cout << "RANKINGS:" << std::endl;
     for(const auto &it : rankings){
         std::cout << it.first << " - " << std::fixed << std::setprecision(4) << it.second << std::endl;
     }
-
     std::cout << std::endl;
+    */
 
-    // Get the fastest sorting algorithm name and time - OR - after rankings - rankings[0].second = fastest time
+    // Set correct answer to fastest sorting algorithm name and runtime to correct variables
     std::string correct_name = rankings[0].first;
     float correct_time = rankings[0].second;
 
-    // Output message if correct or incorrect
+    // Set selected sorting algorithm name and runtime to selected variables
     std::string selected_name = data[selected].first;
     float selected_time = data[selected].second;
-    
+
+    // Output message if correct / incorrect
     if(correct_name == selected_name){
         std::cout << "That is correct! The optimal sorting algorithm for your deck is " << correct_name << " with a runtime of " << correct_time << " units." << std::endl;
         std::cout << std::endl;
+        std::cout << "Here are the recorded runtimes for all 4 sorting algorithms:" << std::endl;
+    } else if(correct_time == selected_time){ // TIE
+        std::cout << "That is correct! The optimal sorting algorithm for your deck is " << selected_name << " with a runtime of " << selected_time << " units." << std::endl;
+        std::cout << std::endl;
+        std::cout << "Here are the recorded runtimes for all 4 sorting algorithms:" << std::endl;
     } else{
         std::cout << "That is incorrect. You chose " << selected_name << " with a runtime of " << selected_time << " units." << std::endl;
         std::cout << "The optimal sorting algorithm for your deck is " << correct_name << " with a runtime of " << correct_time << " units." << std::endl;
-        // print_rankings(insertion_time, merge_time, quick_time, gnome_time);
-        std::cout << "Refer to the key below to understand why " << correct_name << " is the optimal sort." << std::endl;
+        std::cout << "Refer to the runtime rankings and time complexity data below to understand why " << selected_name << " was not a good fit." << std::endl;
         std::cout << std::endl;
-        // print_graph();
     }
 
-    // Print rankings
+    // Print rankings for runtimes
     print_rankings(rankings);
 
-    // Print key for logic and reasoning
-    print_key(initial_sort_str, deck_size);
+    // Print key for feedback on time complexity logic and reasoning
+    print_key(initial_sort_str, deck_size, selected);
 
 }
 
-void print_key(std::string shuffle, int num_cards){ // Modify to print user selected and correct only
+void print_key(std::string shuffle, int num_cards, int choice){ // Modify to print user selected and correct only
 
-    std::cout << "Your deck was made up of " << num_cards << " " << shuffle << " cards representing " << num_cards / 2 << " animal pairs." << std::endl;
-    std::cout << "This key provides further insight into why each of these sorting algorithms performed as such in relation to the initial properties of your deck." << std::endl;
+    std::cout << "Your deck was made up of " << num_cards << " " << shuffle << " cards representing " << num_cards / 2 << " pairs." << std::endl;
+    std::cout << "The information below provides further insight into why the sorting algorithm you selected performed as recorded." << std::endl;
     std::cout << std::endl;
 
-    std::cout << "Insertion Sort" << std::endl;
-    std::cout << "BEST CASE: O(n)" << std::endl;
-    std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
-    std::cout << "WORST CASE: O(n^2)" << std::endl;
-    std::cout << " - Best for small decks" << std::endl;
-    std::cout << " - Best for partially or fully sorted decks" << std::endl;
-    std::cout << " - Inefficient for large decks due to multiple iterations" << std::endl;
-    std::cout << " - Worst case for randomized decks" << std::endl;
-    std::cout << std::endl;
+    switch(choice){
+        case 0:
+            std::cout << "Insertion Sort" << std::endl;
+            std::cout << "BEST CASE: O(n)" << std::endl;
+            std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
+            std::cout << "WORST CASE: O(n^2)" << std::endl;
+            std::cout << " - Best for small decks" << std::endl;
+            std::cout << " - Best for partially or fully sorted decks" << std::endl;
+            std::cout << " - Inefficient for large decks due to multiple iterations" << std::endl;
+            std::cout << " - Worst case for randomized decks" << std::endl;
+            std::cout << std::endl;
+            break;
+        case 1:
+            std::cout << "Merge Sort" << std::endl;
+            std::cout << "BEST CASE: O(n log n)" << std::endl;
+            std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
+            std::cout << "WORST CASE: O(n log n)" << std::endl;
+            std::cout << " - Best for reversed or partially sorted decks" << std::endl;
+            std::cout << " - Efficient for large decks but may find limitations due to merging" << std::endl;
+            std::cout << " - Inefficient for large randomized decks due to merging" << std::endl;
+            std::cout << std::endl;
+            break;
+        case 2:
+            std::cout << "Quick Sort" << std::endl;
+            std::cout << "BEST CASE: O(n log n)" << std::endl;
+            std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
+            std::cout << "WORST CASE: O(n^2)" << std::endl;
+            std::cout << " - Best for large decks" << std::endl;
+            std::cout << " - Efficient for randomized decks due to partitioning" << std::endl;
+            std::cout << " - Inefficient for partially sorted or reversed decks" << std::endl;
+            std::cout << " - Fastest for small sorted decks but slowest for larger sorted decks" << std::endl;
+            std::cout << std::endl;
+            break;
+        case 3:
+            std::cout << "Gnome Sort" << std::endl;
+            std::cout << "BEST CASE: O(n)" << std::endl;
+            std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
+            std::cout << "WORST CASE: O(n^2)" << std::endl;
+            std::cout << " - Best for small decks" << std::endl;
+            std::cout << " - Best for partially or fully sorted decks" << std::endl;
+            std::cout << " - Worst case for randomized decks" << std::endl;
+            std::cout << " - Oftentimes less efficient than insertion sort due to backward steps and swaps" << std::endl;
+            break;
+        default:
+            std::cout << "Invalid Key Choice" << std::endl;
 
-    std::cout << "Merge Sort" << std::endl;
-    std::cout << "BEST CASE: O(n log n)" << std::endl;
-    std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
-    std::cout << "WORST CASE: O(n log n)" << std::endl;
-    std::cout << " - Best for reversed or partially sorted decks" << std::endl;
-    std::cout << " - Efficient for large decks but may find limitations due to merging" << std::endl;
-    std::cout << " - Inefficient for large randomized decks" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Quick Sort" << std::endl;
-    std::cout << "BEST CASE: O(n log n)" << std::endl;
-    std::cout << "AVERAGE CASE: O(n log n)" << std::endl;
-    std::cout << "WORST CASE: O(n^2)" << std::endl;
-    std::cout << " - Best for large decks" << std::endl;
-    std::cout << " - Efficient for randomized decks due to partitioning" << std::endl;
-    std::cout << " - Inefficient for partially sorted or reversed decks" << std::endl;
-    std::cout << " - Fastest for small fully sorted decks but slowest for larger sorted decks" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << "Gnome Sort" << std::endl;
-    std::cout << "BEST CASE: O(n)" << std::endl;
-    std::cout << "AVERAGE CASE: O(n^2)" << std::endl;
-    std::cout << "WORST CASE: O(n^2)" << std::endl;
-    std::cout << " - Best for small decks" << std::endl;
-    std::cout << " - Best for partially or fully sorted decks" << std::endl;
-    std::cout << " - Worst case for randomized decks" << std::endl;
-    std::cout << " - Less efficient than insertion sort due to backward steps and swaps" << std::endl;
-
+    }
 }
 
 void print_rankings(std::vector<std::pair<std::string, float>> &rankings){
@@ -263,6 +258,7 @@ void print_rankings(std::vector<std::pair<std::string, float>> &rankings){
         std::cout << i + 1 << " - " << rankings[i].first << " - ";
         std::cout << std::fixed << std::setprecision(4) << rankings[i].second << std::endl;
     }
+    std::cout << std::endl;
 }
 
 float get_runtime(std::vector<std::string> &deck, int sort_num){
@@ -299,8 +295,8 @@ float get_runtime(std::vector<std::string> &deck, int sort_num){
             return -1.0;
     }
     float runtime = ((float)(finish - start)) / CLOCKS_PER_SEC;
-    return runtime;
 
+    return runtime;
 }
 
 // Insertion sort
