@@ -7,6 +7,3 @@ pokemon.txt github user Cervoise with a list of pokemon orginally created for pa
 	
 animals_2.txt Kaggle user Hessah Alkhattabi public domain dataset created using http://animalia.bio/ data
 	https://www.kaggle.com/datasets/hessahalkhattabi/animals
-	
-names.txt Kaggle user Evan Zhang public domain datset of baby names
-	https://www.kaggle.com/datasets/ironicninja/baby-names
