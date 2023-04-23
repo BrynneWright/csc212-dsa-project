@@ -89,27 +89,26 @@ EXAM
 Pseudocode - Main.cpp
     
 ## Runtime Instruction
-<modify to dsa program>
-The first command line argument should ***always*** be the input file[^1]. <br />  
-**The necessary command line arguments for utilizing the `Individual` class will be input as follows:**  
-$ ./prog `file_name.txt`[^1] `INDIVIDUAL`[^2] `CATEGORY_OF_ASSIGNMENT`[^3] `ASSIGNMENT_NAME`[^4]    
-    <br /> Valid inputs for `CATEGORY_OF_ASSIGNMENT`:    
-    - 'Labs'   
-    - 'ASSIGNMENTS'     
-    - 'projects'     
-    - 'EXAMS'      
-    Examples of valid inputs for `ASSIGNMENT_NAME`:     
-    - 'LAB1'   
-    - 'Assignment3'    
-    - 'REVIEWPROJECT'    
-    - 'FinalProject'   
-    - 'Exam'   
-    Important notes:     
-    `CATGORY_OF_ASSIGNMENT` ***must*** correspond with `ASSIGNMENT_NAME` <br />
-    	- i.e. entering 'LABS' for `CATEGORY_OF_ASSIGNMENT` and 'ASSIGNMENT3' for `ASSIGNMENT_NAME` would result in an incorrect grade being returned.    
-    No spaces should be left in input for `ASSIGNMENT_NAME` <br />
-    	- i.e. entering 'ASSIGNMENT 3' for `ASSIGNMENT_NAME` would be invalid.
-    If input is invalid, the program will break with an assert. <br />
+Without C-lion
+
+	If you are using a terminal simply just just type in the terminal the name of the output file in this case as defined above prog, and the name of the cards list that you would like to use(animals.txt or pokemon.txt) the restis handled internally if using vs code or similar you would have to use ./prog animals with the dot slash in front of the name of the executable. 
+Once you type that in you are given the number of cards and the  state that the deck is in, and then prompts the user to, based on these conditions, pick the best sorting algorithm for this situation. Now the user must enter a number between 1-4 that corresponds to the different sorting algorithms.
+
+After you Enter your answer you will be told if that was correct if not then the program will output why that is the case. The rankings in terms of the time that it took each algorithm to run is also displayed whether or not you were correct or incorrect with the algorithm of choice.
+
+
+
+
+Getting the answer Correct:
+
+If the user selects the option that has the shortest run time they are presented with a message reporting they are correct. As well as the reasons why the other options are incorrect. With a quick explanation of the strengths and weaknesses for each of the algorithms. So that way next time you can have a better understanding of what you should pick with a given starting condition of the lists.
+Getting Answer Wrong:
+
+
+
+If the user selects the option that does not have the shortest run time they are presented with a message reporting they are incorrect. As well as where every algorithm best successes why the other options are incorrect. With a quick explanation of the strengths and weaknesses for each of the algorithms. So that way next time you can have a better understanding of what you should pick with a given starting condition of the lists.
+
+
 
 
 [^1]: The input file (in this case 'file_name.txt') is your own dataset of grades passed in by the first CLA.
