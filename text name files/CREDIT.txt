@@ -4,3 +4,9 @@ Animals.txt github user albskjorr with a list compiled from a-z-animals.com
 
 pokemon.txt github user Cervoise with a list of pokemon orginally created for password cracker
 	https://github.com/cervoise/pentest-scripts/blob/master/password-cracking/wordlists/pokemon-list-en.txt
+	
+animals_2.txt Kaggle user Hessah Alkhattabi public domain dataset created using http://animalia.bio/ data
+	https://www.kaggle.com/datasets/hessahalkhattabi/animals
+	
+names.txt Kaggle user Evan Zhang public domain datset of baby names
+	https://www.kaggle.com/datasets/ironicninja/baby-names
