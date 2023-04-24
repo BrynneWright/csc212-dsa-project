@@ -1,61 +1,60 @@
 CLA input will be taken
-
-Turn input file name into a string from argv[1]
-Open the input file using said string
-If the file does not open print error
-Create an empty vector of strings called "file_library"
-Read the file line by line and add it to the vecots using pushback
-Close the file
+  Turn input file name into a string from argv[1]
+  Open the input file using said string
+  If the file does not open print error
+  Create an empty vector of strings called "file_library"
+  Read the file line by line and add it to the vecots using pushback
+  Close the file
 
 Get random size for unique elements
-Initialize random seed based on current time
-Create "deck_size" ensure it is atleast 100 cards
-Create "deck"
+  Initialize random seed based on current time
+  Create "deck_size" ensure it is atleast 100 cards
+  Create "deck"
 
 Add a pair of each element to the deck as cards
-For each integer i starting from 0 up to and including deck_size:
-Add the element at index i in file_library to the end of deck.
-Add the element at index i in file_library to the end of deck again.
+  For each integer i starting from 0 up to and including deck_size:
+  Add the element at index i in file_library to the end of deck.
+  Add the element at index i in file_library to the end of deck again.
 
 Deck size * 2
-Set the variable num_animals to the value of deck_size, then multiply deck_size by 2.
+  Set the variable num_animals to the value of deck_size, then multiply deck_size by 2.
 
 Get random shuffle for deck (fully, partially, reversed, randomized)
-Set the integer variable "initial_sort" to a random integer between 1 and 4
+  Set the integer variable "initial_sort" to a random integer between 1 and 4
 
 Shuffle the deck accordingly
-initialize initial_sort_str to an empty string
-if initial_sort equals 1, then set initial_sort_str to "FULLY sorted"
-else if initial_sort equals 2, then set initial_sort_str to "PARTIALLY sorted", and for each x starting from deck.size()/2 - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x (inclusive)
-else if initial_sort equals 3, then set initial_sort_str to "REVERSED", and create a temporary vector called tempDeck, then for each element in deck starting from the last and going backwards, add the element to tempDeck, and set deck equal to tempDeck
-else if initial_sort equals 4, then set initial_sort_str to "RANDOMIZED", and for each x starting from deck.size() - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x
+  initialize initial_sort_str to an empty string
+  if initial_sort equals 1, then set initial_sort_str to "FULLY sorted"
+  else if initial_sort equals 2, then set initial_sort_str to "PARTIALLY sorted", and for each x starting from deck.size()/2 - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x (inclusive)
+  else if initial_sort equals 3, then set initial_sort_str to "REVERSED", and create a temporary vector called tempDeck, then for each element in deck starting from the last and going backwards, add the element to tempDeck, and set deck equal to tempDeck
+  else if initial_sort equals 4, then set initial_sort_str to "RANDOMIZED", and for each x starting from deck.size() - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x
 
 Output starting deck properties to user
-Print "About Your Deck:"
-Print "Your deck is " initial_sort_str " and contains " deck_size " cards representing " num_animals " pairs!"
+  Print "About Your Deck:"
+  Print "Your deck is " initial_sort_str " and contains " deck_size " cards representing " num_animals " pairs!"
 
 Prompt user for sorting algorithm selection
-Print "Given these properties, which sorting algorithm will sort your deck the fastest?"
-Print "1 - Insertion Sort"
-Print "2 - Merge Sort"
-Print "3 - Quick Sort"
-Print "4 - Gnome Sort"
-Declare integer variable selected
-Print "Enter a number 1-4: "
-Input user input into selected
-Print "You chose: " selected
-Print an empty line
-Subtract 1 from selected to set it back to the 0-3 range for index
+  Print "Given these properties, which sorting algorithm will sort your deck the fastest?"
+  Print "1 - Insertion Sort"
+  Print "2 - Merge Sort"
+  Print "3 - Quick Sort"
+  Print "4 - Gnome Sort"
+  Declare integer variable selected
+  Print "Enter a number 1-4: "
+  Input user input into selected
+  Print "You chose: " selected
+  Print an empty line
+  Subtract 1 from selected to set it back to the 0-3 range for index
 
 Create a vector called data of pairs, where each pair consists of a string and a float value, representing the algorithm name and its runtime in selection order (insertion, merge, quick, gnome)
 
 Create four vector copies of the deck, named deck1, deck2, deck3, and deck4, respectively, all initialized to the same values as the original deck vector
 
 Create four pairs, each containing a string and a float value, representing the name of a sorting algorithm and its corresponding runtime on a deck copy
-For deck1 using insertion sort, create a pair named data_pair1 with values "Insertion sort" and the result of calling get_runtime(deck1, 1). Add data_pair1 to the end of the data vector using the push_back() function
-For deck2 using merge sort, create a pair named data_pair2 with values "Merge sort" and the result of calling get_runtime(deck2, 2). Add data_pair2 to the end of the data vector
-For deck3 using quick sort, create a pair named data_pair3 with values "Quick sort" and the result of calling get_runtime(deck3, 3). Add data_pair3 to the end of the data vector
-For deck4 using gnome sort, create a pair named data_pair4 with values "Gnome sort" and the result of calling get_runtime(deck4, 4). Add data_pair4 to the end of the data vector
+  For deck1 using insertion sort, create a pair named data_pair1 with values "Insertion sort" and the result of calling get_runtime(deck1, 1). Add data_pair1 to the end of the data vector using the push_back() function
+  For deck2 using merge sort, create a pair named data_pair2 with values "Merge sort" and the result of calling get_runtime(deck2, 2). Add data_pair2 to the end of the data vector
+  For deck3 using quick sort, create a pair named data_pair3 with values "Quick sort" and the result of calling get_runtime(deck3, 3). Add data_pair3 to the end of the data vector
+  For deck4 using gnome sort, create a pair named data_pair4 with values "Gnome sort" and the result of calling get_runtime(deck4, 4). Add data_pair4 to the end of the data vector
 
 Create a new vector named "rankings" of pairs, initialized to the same values as the "data" vector
 
@@ -66,106 +65,107 @@ Assign the first element of the sorted "rankings" vector to two variables: corre
 Assign two variables: selected_name and selected_time, based on the user's selection of sorting algorithm. selected_name is the first element of the pair in the "data" vector at the index given by selected, selected_time is the second element of the same pair
 
 Correct / Incorrect message
-If correct_name is equal to selected_name
-Print "That is correct! The optimal sorting algorithm for your deck is " + correct_name + " with a runtime of " + correct_time + " units."
-Print "Here are the recorded runtimes for all 4 sorting algorithms:"
-else if correct_time is equal to selected_time
-Print "That is correct! The optimal sorting algorithm for your deck is " + selected_name + " with a runtime of " + selected_time + " units."
-Print "Here are the recorded runtimes for all 4 sorting algorithms:"
-else
-Print "That is incorrect. You chose " + selected_name + " with a runtime of " + selected_time + " units."
-Print "The optimal sorting algorithm for your deck is " + correct_name + " with a runtime of " + correct_time + " units."
-Print "Refer to the runtime rankings and time complexity data below to understand why " + selected_name + " was not a good fit."
+  If correct_name is equal to selected_name
+    Print "That is correct! The optimal sorting algorithm for your deck is " + correct_name + " with a runtime of " + correct_time + " units."
+    Print "Here are the recorded runtimes for all 4 sorting algorithms:"
+  else if correct_time is equal to selected_time
+    Print "That is correct! The optimal sorting algorithm for your deck is " + selected_name + " with a runtime of " + selected_time + " units."
+    Print "Here are the recorded runtimes for all 4 sorting algorithms:"
+  else
+    Print "That is incorrect. You chose " + selected_name + " with a runtime of " + selected_time + " units."
+    Print "The optimal sorting algorithm for your deck is " + correct_name + " with a runtime of " + correct_time + " units."
+    Print "Refer to the runtime rankings and time complexity data below to understand why " + selected_name + " was not a good fit."
 
 Print_rankings(rankings)
 
 Print_key send initial_sort_str, deck_size, and selected
 
 void print_key
-initialize a function called print_key that takes three parameters:a string called shuffle, an integer called num_cards, an integer called choice
-Within the function, print the following lines: "Your deck was made up of [num_cards] [shuffle] cards representing [num_cards/2] pairs."
-"The information below provides further insight into why the sorting algorithm you selected performed as recorded."
+  initialize a function called print_key that takes three parameters:a string called shuffle, an integer called num_cards, an integer called choice
+  Within the function, print the following lines: 
+  "Your deck was made up of [num_cards] [shuffle] cards representing [num_cards/2] pairs."
+  "The information below provides further insight into why the sorting algorithm you selected performed as recorded."
 
 Switch(choice)
-have 4 cases where 0 = Insertion Sort, 1 = Merge Sort, 2 = Quick Sort, and 3 = Gnome Sort
-Add the best case, worst case
-Make default print "Invalid Key Choice" as a check
+  have 4 cases where 0 = Insertion Sort, 1 = Merge Sort, 2 = Quick Sort, and 3 = Gnome Sort
+  Add the best case, worst case
+  Make default print "Invalid Key Choice" as a check
 
 void print_rankings
-initialize a function called print_rankings
-Print "Rank - Sorting Algorithm - Runtime"
-for int 1 = 0 while i is < 4 i++ 
-print i+1 - rankings[i].first -
-print fixed setprecision(4) rankings[i].second
+  initialize a function called print_rankings
+  Print "Rank - Sorting Algorithm - Runtime"
+  for int 1 = 0 while i is < 4 i++ 
+    print i+1 - rankings[i].first -
+    print fixed setprecision(4) rankings[i].second
 
 
 initialize a function called get_runtime that will return the runtime
-function get_runtime that takes a reference to a vector of strings called "deck" and an integer called "sort_num" as parameters and returns a float
-Declare a variable called "start"
-Declare a variable called "finish"
+  function get_runtime that takes a reference to a vector of strings called "deck" and an integer called "sort_num" as parameters and returns a float
+  Declare a variable called "start"
+  Declare a variable called "finish"
 
 Switch(sort_num)
-default print "Invalid Sorting Algorithm. Please provide a value between 1-4."
-have 4 cases 1 for Insertion sort, 2 for Merge sort, 3 for quick sort, and 4 for gnome sort
-For each case set start to clock the sort type to deck and finish to clock
-
-calculate runtime by float*(finish-start)
-return runtime
+  default print "Invalid Sorting Algorithm. Please provide a value between 1-4."
+  have 4 cases 1 for Insertion sort, 2 for Merge sort, 3 for quick sort, and 4 for gnome sort
+  For each case set start to clock the sort type to deck and finish to clock
+  
+  calculate runtime by float*(finish-start)
+  return runtime
 
 insertion_sort
-declare the function with the input parameter "deck" of type std::vector<std::string> and return type std::vector<std::string>.
-Get the size of the input vector "deck" and store it in a variable "n"
-Use a for loop starting from index 1 to index n-1
-Inside the for loop, set the current element at index i as the "key" variable
-Set the variable "j" as the previous index i.e. i-1
-Use a while loop to compare the key value with the previous elements of the vector until j is greater than or equal to 0 and the element at index j is greater than the key
-Inside the while loop, shift the element at index j to index j+1
-Decrement j by 1
-After the while loop completes, insert the key value at index j+1
-Return the sorted vector
+  declare the function with the input parameter "deck" of type std::vector<std::string> and return type std::vector<std::string>.
+  Get the size of the input vector "deck" and store it in a variable "n"
+  Use a for loop starting from index 1 to index n-1
+  Inside the for loop, set the current element at index i as the "key" variable
+  Set the variable "j" as the previous index i.e. i-1
+  Use a while loop to compare the key value with the previous elements of the vector until j is greater than or equal to 0 and the element at index j is greater than the key
+  Inside the while loop, shift the element at index j to index j+1
+  Decrement j by 1
+  After the while loop completes, insert the key value at index j+1
+  Return the sorted vector
 
 void merge
-initialize a function called merge that takes input and stores it in ints named left, center, and right
-initialize int n1 = center - left + 1
-initialize int n2 = right - center
-Divide the unsorted into n sub-arrays, each containing one element (base case)
-Repeatedly merge sub-arrays to produce new sorted sub-arrays until there is only one sub-array remaining
+  initialize a function called merge that takes input and stores it in ints named left, center, and right
+  initialize int n1 = center - left + 1
+  initialize int n2 = right - center
+  Divide the unsorted into n sub-arrays, each containing one element (base case)
+  Repeatedly merge sub-arrays to produce new sorted sub-arrays until there is only one sub-array remaining
 
 
 void merge_sort_alg 
-Find the middle index of the sub-array
-Recursively call merge_sort_alg on the left half of the sub-array
-Recursively call merge_sort_alg on the right half of the sub-array
-Merge the two sorted sub-arrays
+  Find the middle index of the sub-array
+  Recursively call merge_sort_alg on the left half of the sub-array
+  Recursively call merge_sort_alg on the right half of the sub-array
+  Merge the two sorted sub-arrays
 
 merge_sort
-take in an array of strings from deck
-initialize an integer n equal to the size of the array
-call merge_sort_alg with arguments (deck,0,n - 1)
-return sorter array
+  take in an array of strings from deck
+  initialize an integer n equal to the size of the array
+  call merge_sort_alg with arguments (deck,0,n - 1)
+  return sorter array
 
 
 int partition
-take in an array of string from deck and two integers low and high
-Get the last element of the array as a pivot, partition the other elements into two sub-arrays
-return an int that represents the index of the pivot element
+  take in an array of string from deck and two integers low and high
+  Get the last element of the array as a pivot, partition the other elements into two sub-arrays
+  return an int that represents the index of the pivot element
 
 void quick_sort_alg
-take in an array of strings from deck and two integers variable low and high
-Check if low is < high if true call partition function to partition the array into two sub-arrays
-recursively sort each sub-array until finished
+  take in an array of strings from deck and two integers variable low and high
+  Check if low is < high if true call partition function to partition the array into two sub-arrays
+  recursively sort each sub-array until finished
 
 quick_sort
-take in an array of strings from deck
-initialize an integer n equal to the size of the array
-call quick_sort_alg with arguments (deck,0,n - 1)
-return sorter array
+  take in an array of strings from deck
+  initialize an integer n equal to the size of the array
+  call quick_sort_alg with arguments (deck,0,n - 1)
+  return sorter array
 
 gnomeSort
-take in a reference to deck
-initialize an integer index equal to 0
-loop until index = deck.size() - 1
-in loop check index is = to 0 if true increment by 1
-if deck[index] >= deck[index -1] increment index
-continue until list is sorted
-return sorted vector
+  take in a reference to deck
+  initialize an integer index equal to 0
+  loop until index = deck.size() - 1
+  in loop check index is = to 0 if true increment by 1
+  if deck[index] >= deck[index -1] increment index
+  continue until list is sorted
+  return sorted vector
