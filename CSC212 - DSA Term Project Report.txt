@@ -1,74 +1,124 @@
-﻿Project Report
-Must include the following:
-* Title Page
-* (Project Name)
-   * group members
-      * Brynne Wright, Daniel Huskey, Derrick Roberts, and Nicholas Wainwright
-   * project topic with concentration 
-      * Sorting Algorithms - Concentration ?
-   * Date
-   * (Due)
-      * April 24th 2023
-* Table of Contents
-   * Headings
-   * Subheadings
-   * Example:
-      * Summary
-      * Overview
-         * Project Description
-         * Project Structure
-         * Pseudocode
-      * Compilation
-         * Inputs / Input Files 
-         * Preferred Method
-         * Alternative Method
-      * Runtime 
-         * Prompted Inputs 
-         * Formatting
-         * How to use the Program
 
 
-* Body (things to include, not necessarily in this order…)
-   * introduction to your topic
-   * (Summary & Overview)
-      * context & purpose
-      * (Project Description)
-      * (Project Structure)
-      * surface level detail
-   * introduction to your project
-      * what is it
-      * (Purpose)
-      * why did you choose it
-      * (Idea / Planning)
-      * how does it mesh with your topic
-      * (Sorting Algorithm Implementation)
-   * methods
-   * (Functionality)
-      * explain the data structure / algorithm in depth
-      * (Topic)
-         * deeper thinking details
-   * implementation
-   * (Pseudocode & Source Code)
-      * describe your work
-      * (Describe Functions)
-      * highlight portions of code to address
-      * (Important Processes)
-      * proofs (if you code is working)
-      * (Sample I/O)
-         * include input scenarios
-         * (Test Cases)
-         * actual outputs from your code
-         * (Output)
-         * detailed descriptions
-   * contributions
-   * (Credit)
-      * create a table with each members contributions
-      * (Table - Brynne, Daniel, Derrick, Nicholas)
-      * note: contributions should be verifiable via GitHub
-      * (GitHub link)
+
+DSA Term Project Report
+Sorting Algorithms
+By Brynne Wright, Daniel Huskey, and Derrick Roberts 
+April 24th, 2023
 
 
-* Conclusion
-   * wrap up findings from research
-   * wrap up findings from your programming
-   * formalize any other conclusions or predictions you can make relative to the topic and ways it may be used in the world
+
+Summary -
+
+We have created an educational card sorting application to compare four different sorting algorithms strengths and weaknesses on varying datasets or “decks”. The application has been developed to resemble an informative learning game which engages the user to decide which algorithm will perform most efficiently on their unique deck. We are using quick sort, gnome sort, insertion sort, and merge sort to perform the 4 different sorting operations throughout our program. This program is intended to be used as an interactive study tool to aid learning about time complexity and sorting algorithms. 
+The application works by first taking in a text file of data representing different distinctions for “cards” and generating a presorted vector of strings holding all possible card elements. In order to create unique properties for the given deck each time the application is run, the size of the deck and the initial state of the cards within the deck are completely randomized. The idea of our game mimics a matching game in which the player’s goal is to correctly line up matching pairs of cards – Therefore, a pair of each card is present in their constructed “deck”. A random number is generated to determine the amount of pairs that will be pulled from the library and given to the user to be sorted. Another random number between 1 and 4 is generated to determine the initial state of the cards within the deck, at this stage one of four things can happen: The deck may remain the same leaving all cards in fully sorted order. The deck may be shuffled to be in reverse order. The deck may be slightly shuffled to be in partially sorted order. Or lastly, the deck may be fully shuffled with all cards in a completely randomized order. One of these processes is performed so that in each game, a unique case (deck) is represented and all of the sorting algorithms' strengths and weaknesses can be shown to the user for educational purposes. Understanding when certain sorting algorithms are best suited is an extremely valuable skill. 
+This study tool can be used to help students better understand different properties that enable each sorting style to perform efficiently and choose the optimal sorting algorithm for a given task. When programming, as long as you know the conditions of the data that you intend to sort, you will be better equipped to implement an algorithm that is most efficient for those properties.
+
+
+
+Overview -
+
+The functionality of our program is housed within one main cpp file which contains all necessary implementations for the four different sorting algorithms recognized in our application. To perform the necessary processes for the merge sort we have developed three functions – A primary “merge_sort” function which will be called in main and a “merge” and “merge_sort_alg” helper function to recursively perform the merge sorting process. To perform the necessary processes for quick sort we have developed another three functions – A primary “quick_sort” function called in main, as well as two helper functions called “partition” and “quick_sort_alg”, which carry out the recursive quick sorting processes. We have also developed an “insertion_sort” function and “gnomesort” function to carry out those unique sorting implementations as well. Another key function implemented throughout our program is the “get_runtime” function which records the time allocated to performing each individual sorting algorithm on the original state of the user’s deck. Amongst these are other functions such as “print_rankings” and “print_key” which provide the user with appropriate feedback on their selection and extra information on the use cases for whichever sorting algorithm has been chosen. 
+The main function carries out all of these processes upon runtime and handles the flow of execution for user input and output. After the creation of a unique deck, the user’s deck properties will be displayed. This will inform the user of the initial state of their cards (sorted, partially sorted, randomized, or reversed) as well as the size of their given deck. Considering this information, the user is asked to select the sorting algorithm which they believe will perform more efficiently in this unique case. After making their selection, the user will be given feedback on whether they made the correct or incorrect choice and provided with the runtimes and rankings of all four sorting algorithms. They will also be given data on the time complexity of their selected algorithm as well as a few points describing tendencies in best and worst use cases. The user is encouraged to run the application multiple times to gain a better understanding of the performance of each algorithm in relation to different properties in data (decks).
+NOTE: All of the sorting algorithms are performed on their own preconditioned version of the initial deck. This way since we are individually running and recording runtimes for all four algorithms we can ensure that the unique properties of the user’s deck do not change for each sort. It is important to ensure that the correct runtime is recorded precisely on each sorting process so as not to interfere with the user's learning. 
+
+
+
+Planning and Troubleshooting -
+
+For planning we have met as a group to brainstorm ideas for our application and talk through different implementation processes. We decided that an educational game would not only be the best option to implement all different versions of sorting algorithms but would also be a beneficial and enjoyable application for others to use upon completion. 
+In the development process there were a few problems that we had to overcome. To start, our original plan of having 50 cards (closer to that of a standard card deck) holding 25 different animal pairs created a runtime issue as the data was being sorted so quickly that all runtimes were being rounded to zero. Even the least efficient sorting algorithm was able to sort in such a short time it was not feasible to be reported and compared leaving us unable to implement the informative and educational goal of our program. Because of this any option that was selected would render as correct making the representation of each different sorting process inaccurate. To remedy this we first looked at sorting based on the number of comparisons that were performed rather than the actual runtime which is required per the instructions. In our next attempt, we increased the size of the deck in order to require enough comparisons to allow for a measurable runtime to pass. This change provided a solution to our problem and generates more comparable data for the user.
+Below is the pseudocode we developed when creating the necessary implementations for our program.
+
+
+
+Implementation -
+
+After the program reads in the file data and initializes a unique deck for the user, the program then prompts the user to choose which sorting algorithm will perform optimally. To make this selection the user inputs a number between 1 and 4 which represents one of the included sorting algorithms. Regardless, the sort name and runtime for each is initially recorded and stored in a vector of pairs called “data” with the elements in range of zero to three. In order to reflect the user’s choice appropriately, their selection is then subtracted by one to set it back to the range of the indices which store the data for each algorithm. The selected sorting algorithm is then deemed to be correct or incorrect based on whether or not it equates to the most optimal runtime recorded from all four algorithms. Using this information, the program outputs the rankings of the algorithm names and runtimes stored in a sorted version of our “data” vector called “rankings”. The program defines functions for each process including calculating the runtime, printing the rankings, and key. The functionality for the Insertion Sort, Merge Sort, Quick Sort, and Gnome Sort algorithms, which are performed and evaluated throughout our program, are implemented as follows. 
+
+
+
+Methods -
+
+The primary focus of our project was on the uses of three classic sorting algorithms accompanied by a fourth sorting algorithm we have learned outside of the course. Our group chose the “gnome” sorting algorithm as our fourth sorting type for the program. The sorting algorithms implemented were utilized to perform the calculations necessary to create the educational game we have developed, and fit the overall goal of our project. 
+
+Our Insertion Sort function can be seen here:
+
+Above you will see the insertion sort implementation for our project. The code above can be compared to sorting a deck of cards, considering the code iterates through each element of the array and places it in the correct spot by shifting all of the larger elements to the right. The function takes the specified vector of strings as input, in this case the user’s deck, and returns the sorted version of the vector using the insertion sorting strategies. At first, the function gets the size of the input vector and iterates over each element of the vector. Starting at each index, it compares the current element to the previous elements. The function is constantly checking the value of the previous element with the current element until it finds the correct position for the value.  
+
+Our Merge Sort functions can be seen here:
+
+Above you will see the merge sorting implementations for our project. The code above can be compared to dividing and conquering sorting algorithms using recursion, and then merging the sorted halves to produce one sorted array. The merge sort function itself takes a vector of strings as an input and returns a sorted vector. It calls the merge sort algorithm function that takes the vector, lowest index, and highest index as inputs. The merge sort algorithm function uses recursion to divide the vector into halves until the vector is sorted. The merge function is utilized to merge the sorted halves into one vector and then compares each element of the two sub-arrays from the original array. It then adds the smaller element to the original array.
+
+Our Quick Sort functions can be seen here:
+
+Above you will see the quick sort algorithm represented. This works by selecting an element from the array and partitioning the other elements into two sub-arrays if they are less than or greater than the pivot. The sub-arrays are sorted with recursion by applying a similar process until the sub-arrays are of size 1. This particular function takes a vector of specified strings as input and returns a new sorted vector using the specified quick sort algorithm. The function gets the size of the input vector and then calls the quick sort helper function, which takes the vector, lowest index, and highest index as inputs. The quick sort helper function uses recursion to partition the vector until it is sorted. 
+
+Our Gnome Sort function can be seen here:
+
+The sorting algorithm that we chose to learn and implement that was not taught in class is Gnome Sort, a variation of insertion sort that works without the need for a nested for loop. Which you would think would help the time complexity however it does not as the time complexity for this algorithm is O(n2) as even though there is only one loop and one counter this counter is both increased and decreased as the program runs leading to the O(n2) as the program could have cases where the counter is fully reset to zero repeatedly having to go through all of the elements twice. The best case for Gnome sort occurs when the array is already sorted in which case its O(n) with no swaps having to be made during the full run time of the program, however the Worst and Average Cases case both are O(n2). This algorithm works on a similar principle of insertion sort, with the change that there is only one loop, where the algorithm works by starting with an index that is used to compare values in the vector. This index can be both increased as well as decreased depending on where the value is placed. After getting this index, the algorithm takes the value at that index and compares the value to the left index and checks to see if that value is greater than the value being moved. If it is not then the index is moved back until it finds this point. Once it finds this point where the left is no longer greater than the current value then the algorithm moves the value to that position. 
+
+In the implementation of the algorithm that we have we take in a as the input for the method vector of strings known as the deck of cards with the names of animals that depending on what number is generated will either be fully sorted to begin with, half way sorted, partially sorted or sorted in the opposite direction, reverse alphabetical order, in order to show the best and worse cases for all of the sorting algorithms that we implemented. Inside of the method the vector is sorted based on the outlined steps described above non destructively on the input vector with a slight modification to the algorithm. Once the algorithm is complete it returns this new vector that can be saved in the main function. 
+
+
+
+Compilation -
+
+Prefered Method:
+This program was developed using CLion during compilation and runtime. We recommend CLion for application use.
+The command line arguments you must provide in the program configuration should be input as follows: 
+<file name> 
+For example - “animals.txt”
+Once you have modified the configurations and input the name of the file you intend to use, press the play button in the upper right hand corner to run the application.
+During runtime, you will be prompted for further input which should be performed by making your numerical selection and pressing “enter”.
+
+Alternative Method:
+If you are unable to use CLion to run the application you can compile in an alternative IDE such as Visual Studio Code using the "g++" compiler invocation command and "-o" command to generate the target executable file "prog".
+This method of compilation is done within the terminal and should be input as follows:
+g++ main.cpp -o prog
+The “-o prog” simply states that the output executable will be called in this case prog.exe. Without this flag the output file should be called a.exe, which functionally works but can be confusing as to what it does.  
+To run the program you will enter the following into the terminal:
+./prog <file name> 
+For example - “./prog animals.txt”
+During runtime, you will be prompted for further input which should be performed by making your numerical selection and pressing “enter”.
+
+
+
+Runtime -
+
+Here is an example of what the runtime might look like for a correct case in our program:
+Once you have successfully started the application using CLion or an alternative IDE the following will be displayed:
+
+Each time you run the program you are presented with a different deck. In this case, there are 4870 total cards in your deck and they are all shuffled to be completely randomized. It is important to consider how these properties might influence runtime when performing each sorting algorithm to order your pairs. You are prompted to select the option you believe will return the quickest runtime. You should do so by making your numerical selection and pressing “enter”. From there, the runtimes for all four sorting algorithms will be recorded, stored, and reported back. These calculations will be displayed to you in ranked order from most efficient to least efficient runtime. This is an example of what you might see if your selection was correct:
+
+In this case, I knew that quick sort performs well on randomized datasets due to the use of partitioning so I chose to input “3” for quick sort. The application then tells me I was correct and displays the runtimes for 4 algorithms in comparison! By comparing these values, it is clear that there was a big difference in using quick sort vs gnome sort on my large randomized deck. Finally, the program will restate the properties of your deck and provide you with further information on the time complexities and best/worst use case tendencies for the algorithm you have selected. For this case the information will be printed as follows:
+
+Use this information to better understand why your selection performed accordingly and play the game again to keep practicing!
+
+Here is an example of what the runtime might look like for an incorrect case in our program:
+Once you have successfully started the application using CLion or an alternative IDE the following will be displayed:
+
+Each time you run the program you are presented with a different deck. In this case, there are 4894 total cards in your deck and they are all shuffled to be completely randomized. It is important to consider how these properties might influence runtime when performing each sorting algorithm to order your pairs. You are prompted to select the option you believe will return the quickest runtime. You should do so by making your numerical selection and pressing “enter”. From there, the runtimes for all four sorting algorithms will be recorded, stored, and reported back. These calculations will be displayed to you in ranked order from most efficient to least efficient runtime. This is an example of what you might see if your selection was incorrect:
+
+In this case, I chose to input “4” for gnome sort. The application then tells me I was incorrect and displays the runtimes for 4 algorithms in comparison! By comparing these values, it is clear that there was a big difference in using gnome sort on my large randomized deck compared to another sorting algorithm like quick sort. This may be due to the extra steps and swaps performed in the gnome sort algorithm. Finally, the program will restate the properties of your deck and provide you with further information on the time complexities and best/worst use case tendencies for the algorithm you have selected. For this case the information will be printed as follows:
+
+Use this information to better understand why your selection performed accordingly and play the game again to keep practicing!
+
+
+
+Conclusion -
+
+In conclusion, the application we have created is a fun educational sorting game that compares the strengths and weaknesses of four different sorting algorithms on varying dataset properties. The goal of the program is to show the performance of all four sorting types under different conditions and help the user better understand appropriate use cases for each. The program serves as a unique and user-friendly study tool that helps students practice choosing the most appropriate algorithm for the data being sorted. The program utilizes a ranking system to show the runtime of each algorithm for comparison. Although there were some runtime problems during the planning and troubleshooting phase, the team was able to overcome them and create an enjoyable and effective study game. The implementation includes functions for each sorting algorithm, calculating the runtime of each sort, printing the final rankings, and providing educational information on the user selected algorithm. 
+Our application can be a valuable tool for programmers, data scientists, and anyone who needs to better understand how and why different algorithms can be used to sort large amounts of data efficiently. By understanding the time complexities as well as the strengths and weaknesses of each sorting algorithm, users can make informed decisions about which algorithm to use for specific tasks, ultimately improving the optimization and performance of their programs. This can be particularly useful in industries such as finance, where large amounts of data need to be sorted and analyzed quickly. Additionally, this application can be a helpful study tool for our own classmates and other students learning about sorting algorithms, allowing them to visualize the differences between them in an interactive way. Overall, the project demonstrates a unique implementation for the practical use of sorting algorithms in programming and provides an enjoyable and educational tool for others.
+
+
+
+Contributions -
+
+Brynne Wright: Developed implementations for the necessary processes of our program and designed the structure for application code. Performed testing and finalized working functions to create the functioning main.cpp. Created and developed our readme document in GitHub. Wrote the project summary, overview, and implementation sections in the final project report. Wrote examples of correct and incorrect runtime cases in our final project report with sample I/O. Provided comprehensive compilation instructions in both our final project report and readme document. Created the presentation.
+
+Daniel Huskey: Added the Gnome sort function algorithm and assisted in deck shuffling implementations. Wrote about Gnome sort implementations in the final project report. Helped develop the readme file in GitHub. Helped Brynne resolve issues with recording runtimes and adjusting other necessary implementations. Updated file handling implementations and test files. Helped write the project summary in the final project report as well as other sections like planning and runtime.
+
+Derrick Roberts: Added handling for file input in main. Worked on project planning. Wrote about troubleshooting and conclusions in the final project report.
+
+Nicholas Wainwright: Added the Quick sort and Merge sort algorithms and assisted in deck shuffling implementations. Wrote about sorting implementations and methods in the final project report.
