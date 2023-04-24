@@ -30,7 +30,7 @@ std::vector<std::string> gnomeSort(std::vector<std::string> &deck);
 
 // MAIN
 int main(int argc, char* argv[]){
-
+// CLA filename input
     if (argc < 2) {
         std::cout << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
