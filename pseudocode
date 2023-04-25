@@ -25,9 +25,12 @@ Get random shuffle for deck (fully, partially, reversed, randomized)
 Shuffle the deck accordingly
   initialize initial_sort_str to an empty string
   if initial_sort equals 1, then set initial_sort_str to "FULLY sorted"
-  else if initial_sort equals 2, then set initial_sort_str to "PARTIALLY sorted", and for each x starting from deck.size()/2 - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x (inclusive)
-  else if initial_sort equals 3, then set initial_sort_str to "REVERSED", and create a temporary vector called tempDeck, then for each element in deck starting from the last and going backwards, add the element to tempDeck, and set deck equal to tempDeck
-  else if initial_sort equals 4, then set initial_sort_str to "RANDOMIZED", and for each x starting from deck.size() - 0 - 1 down to 0, swap the element at index x with the element at a random index between 0 and x
+  else if initial_sort equals 2, then set initial_sort_str to "PARTIALLY sorted", and for each x starting from deck.size()/2 - 0 - 1 down to 0, swap the element at 
+  index x with the element at a random index between 0 and x (inclusive)
+  else if initial_sort equals 3, then set initial_sort_str to "REVERSED", and create a temporary vector called tempDeck, then for each element in deck starting 
+  from the last and going backwards, add the element to tempDeck, and set deck equal to tempDeck
+  else if initial_sort equals 4, then set initial_sort_str to "RANDOMIZED", and for each x starting from deck.size() - 0 - 1 down to 0, swap the element at index
+  x with the element at a random index between 0 and x
 
 Output starting deck properties to user
   Print "About Your Deck:"
@@ -46,23 +49,33 @@ Prompt user for sorting algorithm selection
   Print an empty line
   Subtract 1 from selected to set it back to the 0-3 range for index
 
-Create a vector called data of pairs, where each pair consists of a string and a float value, representing the algorithm name and its runtime in selection order (insertion, merge, quick, gnome)
+Create a vector called data of pairs, where each pair consists of a string and a float value, representing the algorithm name and its runtime in 
+selection order (insertion, merge, quick, gnome)
 
 Create four vector copies of the deck, named deck1, deck2, deck3, and deck4, respectively, all initialized to the same values as the original deck vector
 
 Create four pairs, each containing a string and a float value, representing the name of a sorting algorithm and its corresponding runtime on a deck copy
-  For deck1 using insertion sort, create a pair named data_pair1 with values "Insertion sort" and the result of calling get_runtime(deck1, 1). Add data_pair1 to the end of the data vector using the push_back() function
-  For deck2 using merge sort, create a pair named data_pair2 with values "Merge sort" and the result of calling get_runtime(deck2, 2). Add data_pair2 to the end of the data vector
-  For deck3 using quick sort, create a pair named data_pair3 with values "Quick sort" and the result of calling get_runtime(deck3, 3). Add data_pair3 to the end of the data vector
-  For deck4 using gnome sort, create a pair named data_pair4 with values "Gnome sort" and the result of calling get_runtime(deck4, 4). Add data_pair4 to the end of the data vector
+  For deck1 using insertion sort, create a pair named data_pair1 with values "Insertion sort" and the result of calling get_runtime(deck1, 1). Add data_pair1 to 
+  the end of the data vector using the push_back() function
+  For deck2 using merge sort, create a pair named data_pair2 with values "Merge sort" and the result of calling get_runtime(deck2, 2). Add data_pair2 to the end
+  of the data vector
+  For deck3 using quick sort, create a pair named data_pair3 with values "Quick sort" and the result of calling get_runtime(deck3, 3). Add data_pair3 to the end
+  of the data vector
+  For deck4 using gnome sort, create a pair named data_pair4 with values "Gnome sort" and the result of calling get_runtime(deck4, 4). Add data_pair4 to the end
+  of the data vector
 
 Create a new vector named "rankings" of pairs, initialized to the same values as the "data" vector
 
-Sort the "rankings" vector in ascending order based on the second value of each pair (i.e., the runtime), using the std::sort() function with a lambda function as the comparison criterion. The lambda function takes two pairs as arguments and compares their second elements. The std::sort() function is called on the "rankings" vector and the lambda function as the third argument.
+Sort the "rankings" vector in ascending order based on the second value of each pair (i.e., the runtime), using the std::sort() function with a lambda function as
+the comparison criterion. The lambda function takes two pairs as arguments and compares their second elements. The std::sort() function is called on the "rankings"
+vector and the lambda function as the third argument.
 
-Assign the first element of the sorted "rankings" vector to two variables: correct_name, which is the first element of the first pair, and correct_time, which is the second element of the first pair. This is done by accessing the "rankings" vector using the subscript operator with an index of 0 to access the first element, and then accessing its first and second elements using the dot operator
+Assign the first element of the sorted "rankings" vector to two variables: correct_name, which is the first element of the first pair, and correct_time, which is
+the second element of the first pair. This is done by accessing the "rankings" vector using the subscript operator with an index of 0 to access the first element,
+and then accessing its first and second elements using the dot operator
 
-Assign two variables: selected_name and selected_time, based on the user's selection of sorting algorithm. selected_name is the first element of the pair in the "data" vector at the index given by selected, selected_time is the second element of the same pair
+Assign two variables: selected_name and selected_time, based on the user's selection of sorting algorithm. selected_name is the first element of the pair in the 
+"data" vector at the index given by selected, selected_time is the second element of the same pair
 
 Correct / Incorrect message
   If correct_name is equal to selected_name
